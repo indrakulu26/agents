@@ -604,7 +604,7 @@ class RealtimeSession(llm.RealtimeSession):
                 if self._pending_generation_fut is fut:
                     self._pending_generation_fut = None
 
-        timeout_handle = asyncio.get_event_loop().call_later(5.0, _on_timeout)
+        timeout_handle = asyncio.get_event_loop().call_later(30.0, _on_timeout)
         fut.add_done_callback(lambda _: timeout_handle.cancel())
 
         return fut
